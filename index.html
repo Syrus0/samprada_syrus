@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💖</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+            transition: background-image 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-top: 50px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-container {
+            margin-top: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .choice-button {
+            font-size: 1.5em;
+            padding: 15px 40px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            color: white;
+            background: linear-gradient(145deg, #ff4e50, #fc913a);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .choice-button:hover {
+            background: linear-gradient(145deg, #fc913a, #ff4e50);
+            transform: scale(1.1);
+        }
+
+        .love-letter {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 245, 230, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            font-family: 'Courier New', Courier, monospace;
+            color: #5a3e36;
+            width: 80%;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .love-letter h2 {
+            text-align: center;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body id="background">
+    <h1 id="question">Will You Be My Valentine? 💘</h1>
+
+    <div class="button-container">
+        <button class="choice-button yes-button">Yes</button>
+        <button class="choice-button no-button">No</button>
+    </div>
+
+    <div class="love-letter" id="loveLetter">
+        <h2>My Love,</h2>
+        <p>You mean the world to me, and every moment spent with you is a treasure. From the way you smile to the way you light up my darkest days, I am endlessly grateful for you.</p>
+        <p>I want to spend forever by your side, holding your hand, sharing laughter, and creating the most beautiful memories together. You are my heart, my joy, my everything.</p>
+        <p>Will you be mine, not just for today, but forever? Because I love you more than words can express, and I want nothing more than to spend my life making you happy.</p>
+        <p>With all my love,<br>Your Forever Valentine ❤️</p>
+    </div>
+
+    <iframe 
+        width="0" 
+        height="0" 
+        src="https://www.youtube.com/embed/sWlnvtS2DeE?autoplay=1&loop=1&playlist=sWlnvtS2DeE&controls=0&mute=0" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media"
+        style="position: absolute; z-index: -99;"></iframe>
+
+    <script>
+        const images = [
+            "https://i.ibb.co/KzxPZjjY/Whats-App-Image-2025-02-08-at-05-44-25.jpg",
+            "https://i.ibb.co/1GV8TNYL/Whats-App-Image-2025-02-08-at-05-44-24-1.jpg",
+            "https://i.ibb.co/nXZg4ns/Whats-App-Image-2025-02-08-at-05-44-24.jpg",
+            "https://i.ibb.co/vx2J0smx/Whats-App-Image-2025-02-08-at-05-44-22-1.jpg",
+            "https://i.ibb.co/Y72B1QVq/Whats-App-Image-2025-02-08-at-05-44-21-1.jpg",
+            "https://i.ibb.co/zVm3sCRP/Whats-App-Image-2025-02-08-at-05-44-21.jpg"
+        ];
+
+        let index = 0;
+        function changeBackground() {
+            document.body.style.backgroundImage = `url('${images[index]}')`;
+            index = (index + 1) % images.length;
+        }
+
+        setInterval(changeBackground, 3000);
+
+        const yesButton = document.querySelector('.yes-button');
+        const noButton = document.querySelector('.no-button');
+        const questionText = document.getElementById('question');
+        const buttonContainer = document.querySelector('.button-container');
+        const loveLetter = document.getElementById('loveLetter');
+
+        const questions = [
+            "Are you sure? 😏",
+            "Pleaseee? 😍",
+            "We can be the best couple in the whole world! 😘",
+            "Ok, last time... Please be my Valentine? 💖"
+        ];
+        
+        let clickCount = 0;
+
+        noButton.addEventListener('click', () => {
+            if (clickCount < questions.length) {
+                questionText.textContent = questions[clickCount];
+                yesButton.style.transform = `scale(${1 + clickCount * 0.5})`;
+                noButton.style.transform = `scale(${1 - clickCount * 0.2})`;
+                clickCount++;
+            }
+        });
+
+        yesButton.addEventListener('click', () => {
+            questionText.style.display = 'none';
+            buttonContainer.style.display = 'none';
+            loveLetter.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
